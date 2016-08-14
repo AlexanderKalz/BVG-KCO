@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="de.drkalz.bvg_kco.MainActivity">
+
+    <TextView
+        android:id="@+id/emailTxV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Ihre Emailadresse:"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintTop_toTopOf="@+id/activity_main" />
+
+    <EditText
+        android:id="@+id/emailEdT"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Ihre BVG-Emailadresse"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/emailTxV"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/passwordTxV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Ihr Password:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintTop_toBottomOf="@+id/emailEdT" />
+
+    <EditText
+        android:id="@+id/passwordEdT"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Ihr Password"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTxV"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/phoneTxV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Ihre Mobil-Kurzwahl:"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEdT" />
+
+    <EditText
+        android:id="@+id/phoneEdT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="BVG-Kurzwahl"
+        android:inputType="phone"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="@+id/passwordEdT"
+        app:layout_constraintRight_toRightOf="@+id/passwordEdT"
+        app:layout_constraintTop_toBottomOf="@+id/phoneTxV" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="?android:attr/colorPressedHighlight"
+        android:text="Login"
+        android:textStyle="normal|bold"
+        android:typeface="monospace"
+        app:layout_constraintLeft_toLeftOf="@+id/phoneEdT"
+        app:layout_constraintRight_toRightOf="@+id/phoneEdT"
+        app:layout_constraintTop_toBottomOf="@+id/phoneEdT" />
+
+</android.support.constraint.ConstraintLayout>
