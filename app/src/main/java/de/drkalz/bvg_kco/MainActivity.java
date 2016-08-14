@@ -55,11 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!email.equals("") && !password.equals("")) {
 
-                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()) {
+                            if (task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(), "Erfolgreich eingeloggt!", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "User nicht angemeldet", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
