@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -23,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Dependencies zum Layout herstellen
         final EditText emailEdT = (EditText) findViewById(R.id.emailEdT);
-        EditText passwordEdT = (EditText) findViewById(R.id.passwordEdT);
+        final EditText passwordEdT = (EditText) findViewById(R.id.passwordEdT);
         EditText phoneEdT = (EditText) findViewById(R.id.phoneEdT);
-        Button loginBtn = (Button) findViewById(R.id.loginBtn);
+        final Button loginBtn = (Button) findViewById(R.id.loginBtn);
 
         // Authentifikation prüfen
         mAuth = FirebaseAuth.getInstance();
@@ -35,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     emailEdT.setText(user.getEmail().toString());
+                    loginBtn.setVisibility(View.INVISIBLE);
                 } else {
+                    loginBtn.setVisibility(View.VISIBLE);
                     Toast.makeText(getApplicationContext(), "Bitte loggen Sie sich ein!", Toast.LENGTH_LONG).show();
                 }
             }
@@ -45,6 +50,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String email = emailEdT.getText().toString();
+                String password = passwordEdT.getText().toString();
+
+                if (!email.equals("") && !password.equals("")) {
+
+                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Erfolgreich eingeloggt!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+
+                }
             }
         });
     }
